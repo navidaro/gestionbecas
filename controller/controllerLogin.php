@@ -13,9 +13,9 @@ switch ($opcion) {
         $pass = $_REQUEST['pass'];
         $res = $loginModel->ingresar($user, $pass);
         if ($res) {
-            header('Location: ../index.php');
+            header('Location: ../main.php');
         } else {
-            header('Location: ../login.php');
+            header('Location: ../index.php');
         }
         break;
     default :

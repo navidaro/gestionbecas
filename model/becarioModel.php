@@ -99,8 +99,8 @@ class becarioModel {
 
     public function actualizarBecario($cedula, $fecha_ini, $fecha_fin, $carrera, $cuenta) {
         $hoy = getdate();
-        $inicialFecha = split("-", $fecha_ini);
-        $finaFecha = split("-", $fecha_fin);
+        $inicialFecha = explode("-", $fecha_ini);
+        $finaFecha = explode("-", $fecha_fin);
         if ($hoy["year"] > $inicialFecha[0]) {
             throw new Exception("LA FECHA INICIAL ES UNA FECHA PASADA");
         } else {

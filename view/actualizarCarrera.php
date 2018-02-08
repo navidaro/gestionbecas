@@ -8,13 +8,20 @@ include_once '../model/Carrera.php';
     <head>
         <meta charset="UTF-8">
         <title>GESTION BECAS</title>
-        <meta httpequiv="refresh" content="0; url=view/index.php"/>
-        <link   href="../css/bootstrap.min.css" rel="stylesheet">
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
+        <!--Import Google Icon Font-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <script src="../js/jquery-2.1.4.js"></script>
         <script src="../smoke.js-master/smoke.js"></script>
         <script src="../smoke.js-master/smoke.min.js"></script>
         <script src="../smoke.js-master/bower.json"></script>
         <link   href="../smoke.js-master/smoke.css" rel="stylesheet">
-        <script src="js/jquery-2.1.4.js"></script>
+        <script src="../js/Validaciones.js"></script>
         <script language="JavaScript">
             function actualizacion() {
                 smoke.signal("LA CARRERA HA SIDO ACTUALIZADA", function (e) {
@@ -34,20 +41,31 @@ include_once '../model/Carrera.php';
             }
         </script>
     </head>
-    <body background='../img/fondo.jpg'>
-        <div class="container-fluid">
-            <ul class="nav nav-pills">
-                <li class="active"><a href="../controller/controllerPostulante.php?opcion=listarP">INICIO</a></li>
-                <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">LISTA POSTULANTES</a></li>
-                <li><a href="../controller/controllerbecario.php?opcion=listarB">LISTA BECARIOS</a></li>
-                <li><a href="../controller/controllerBeca.php?opcion=listarResumen">RESUMEN BECAS</a></li>
-                <li><a href="../controller/controllerUniversidad.php?opcion=listarU">CRUD UNIVERSIDADES</a></li>
-                <li><a href="../controller/controllerBeca.php?opcion=listarBeca">CRUD BECAS</a></li>
-                <li><a href="../controller/controllerProvincia.php?opcion=listarProv">CRUD PROVICNCIAS</a></li>
-                <li><a href="../controller/controllerCarrera.php?opcion=listarC">CRUD CARRERAS</a></li>
-            </ul>
+    <body>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="../controller/controllerUniversidad.php?opcion=listarU">CRUD Universidades</a></li>
+            <li><a href="../controller/controllerBeca.php?opcion=listarBeca">CRUD Becas</a></li>
+            <li><a href="../controller/controllerProvincia.php?opcion=listarProv">CRUD Provincias</a></li>
+            <li><a href="../controller/controllerCarrera.php?opcion=listarC">CRUD Carreras</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper red lighten-2">
+                <a href="../main.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
+                    <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>
+                    <li><a href="../controller/controllerBecario.php?opcion=listarB">Lista de Becarios</a></li>
+                    <li><a href="../controller/controllerBeca.php?opcion=listarResumen">Resumen de Becas</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Administracion de Variables<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <div class="container">
             <div class="row">
-                <h3>EDITAR CARRERA</h3>
+                <br>
+                <h4>Editar Carrera</h4>
+                <div class="divider"></div>
             </div>
             <div class="row">
                 <?php
@@ -55,25 +73,23 @@ include_once '../model/Carrera.php';
                 ?>
                 <form action="../controller/controllerCarrera.php">
                     <input type="hidden" name="opcion" value="actualizacion">
-                    <table class="table table-striped table-bordered">
-                        <tr>
-                            <td>CODIGO DE LA CARRERA</td>
-                            <td>
-                                <?php echo $carrera->getCod_carrera(); ?>
-                                <input type="hidden" name="cod_carrera" value="<?php echo $carrera->getCod_carrera(); ?>" />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>NOMBRE</td>
-                            <td>
-                                <input type="text" name="nombre" pattern="[a-zA-Z- ]*" value="<?php echo $carrera->getNombre(); ?>" />
-                            </td>
-                        </tr>
-                            <td colspan="2"><input class='btn btn-info' type="submit" value="ACTUALIZAR CARRERA"></td>
-                        </tr>
-                    </table>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            CODIGO DE LA CARRERA<br><br>
+                            <?php echo $carrera->getCod_carrera(); ?>
+                            <input type="hidden" name="cod_carrera" value="<?php echo $carrera->getCod_carrera(); ?>" />
+                        </div>
+                        <div class="input-field col s6">
+                            NOMBRE
+                            <input type="text" name="nombre" pattern="[a-zA-Z- ]*" value="<?php echo $carrera->getNombre(); ?>" />
+                        </div>
+                    </div>
+                    <button class="waves-effect waves-light btn red lighten-2" type="submit" name="action">Actualizar
+                    </button>
                 </form>
             </div>
         </div>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
     </body>
 </html>

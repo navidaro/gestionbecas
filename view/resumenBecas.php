@@ -17,7 +17,7 @@ include_once '../model/Postulante.php';
         <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
         <!--Let browser know website is optimized for mobile-->
-        <meta httpequiv="refresh" content="0; url=view/index.php" />
+        <meta httpequiv="refresh" content="0; url=view/main.php" />
         <script src="../js/jquery-2.1.4.js"></script>
         <title></title>
     </head>
@@ -30,7 +30,7 @@ include_once '../model/Postulante.php';
         </ul>
         <nav>
             <div class="nav-wrapper red lighten-2">
-                <a href="../index.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
+                <a href="../main.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
                 <ul class="right hide-on-med-and-down">
                     <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
                     <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>

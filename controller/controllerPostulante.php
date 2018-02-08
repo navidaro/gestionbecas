@@ -25,7 +25,7 @@ switch ($opcion) {
 //actualizamos lista de postulantes:
         $listado = $postulanteModel->getPostulantes();
         $_SESSION['listadoP'] = serialize($listado);
-        header('Location: ../index.php');
+        header('Location: ../main.php');
 
         break;
 
@@ -37,7 +37,7 @@ switch ($opcion) {
         $listado = $postulanteModel->getPostulantes();
 //y los guardamos en sesion:
         $_SESSION['listadoP'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/lstaPostulantes.php');
         break;
 
@@ -77,8 +77,8 @@ switch ($opcion) {
         $listado = $postulanteModel->getPostulantes();
 //y los guardamos en sesion:
         $_SESSION['listadoP'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
-        header('Location: ../index.php');
+//redireccionamos a la pagina main para visualizar:
+        header('Location: ../main.php');
         break;
 
     case "listarPostulantes":
@@ -86,7 +86,7 @@ switch ($opcion) {
         $listado = $postulanteModel->getPostulantes();
 //y los guardamos en sesion:
         $_SESSION['listadoP'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/lstaPostulantes.php');
         break;
 
@@ -96,11 +96,11 @@ switch ($opcion) {
         $postulante = $postulanteModel->getPostulante($cedula);
 //y los guardamos en sesion:
         $_SESSION['postulante'] = serialize($postulante);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/acreditar.php');
         break;
 
     default:
-//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina index:
-        header('Location: ../index.php');
+//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina main:
+        header('Location: ../main.php');
 }

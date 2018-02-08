@@ -12,6 +12,7 @@
             <file>file:/C:/xampp/htdocs/gestionBecas/view/acreditar.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/index.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/view/crudProvincia.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/Resumen.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/js/materialize.min.js</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/model/becaModel.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/model/loginModel.php</file>
@@ -27,6 +28,7 @@
             <file>file:/C:/xampp/htdocs/gestionBecas/view/actualizarBeca.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/view/crudBecas.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerBeca.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/newPHPClass.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerLogin.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/view/listaBecarios.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/model/Beca.php</file>

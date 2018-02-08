@@ -1,170 +1,86 @@
-<!DOCTYPE html>
-<?php
-session_start();
-include_once 'model/Provincia.php';
-include_once 'model/Universidad.php';
-include_once 'model/becaModel.php';
-include_once 'model/Beca.php';
-include_once 'model/Becario.php';
-include_once 'model/Postulante.php';
-?>
 <html>
     <head>
-        <meta charset="UTF-8">
-        <title>GESTION BECAS</title>
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
         <!--Import Google Icon Font-->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <!--Import materialize.css-->
-        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-        <!--Let browser know website is optimized for mobile-->
+        <link type="text/css" rel="stylesheet" href="css/materialize.min.css"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        <script src="js/jquery-2.1.4.js"></script>
-        <script src="smoke.js-master/smoke.js"></script>
-        <script src="smoke.js-master/smoke.min.js"></script>
-        <script src="smoke.js-master/bower.json"></script>
-        <link   href="smoke.js-master/smoke.css" rel="stylesheet">
-        <script src="js/Validaciones.js"></script>
-        <script language="JavaScript">
-            function confirmacion() {
-                smoke.signal("EL POSTULANTE HA SIDO GUARDADO", function (e) {
-                }, {
-                    duration: 3000,
-                    classname: "custom-class"
-                });
+        <style>
+            body {
+                display: flex;
+                min-height: 100vh;
+                flex-direction: column;
             }
 
-        </script>
-        <title>GESTION BECAS</title>
+            body {
+                background: #fff;
+            }
+
+            .input-field input[type=date]:focus + label,
+            .input-field input[type=text]:focus + label,
+            .input-field input[type=email]:focus + label,
+            .input-field input[type=password]:focus + label {
+                color: #e91e63;
+            }
+
+            .input-field input[type=date]:focus,
+            .input-field input[type=text]:focus,
+            .input-field input[type=email]:focus,
+            .input-field input[type=password]:focus {
+                border-bottom: 2px solid #e91e63;
+                box-shadow: none;
+            }
+        </style>
     </head>
     <body>
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="controller/controllerUniversidad.php?opcion=listarU">CRUD Universidades</a></li>
-            <li><a href="controller/controllerBeca.php?opcion=listarBeca">CRUD Becas</a></li>
-            <li><a href="controller/controllerProvincia.php?opcion=listarProv">CRUD Provincias</a></li>
-            <li><a href="controller/controllerCarrera.php?opcion=listarC">CRUD Carreras</a></li>
-        </ul>
-        <nav>
-            <div class="nav-wrapper red lighten-2">
-                <a href="index.php" class="brand-logo"><img src="img/sello.png" width="150 px" height="50 px" ></a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
-                    <li><a href="controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>
-                    <li><a href="controller/controllerbecario.php?opcion=listarB">Lista de Becarios</a></li>
-                    <li><a href="controller/controllerBeca.php?opcion=listarResumen">Resumen de Becas</a></li>
-                    <!-- Dropdown Trigger -->
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Administracion de Variables<i class="material-icons right">arrow_drop_down</i></a></li>
-                </ul>
+        <div class="section"></div>
+    <center>
+        <img class="responsive-img" style="width: 250px;" src="http://eduvirtual.utn.edu.ec/images/sello_UTN_f.png" />
+        <div class="section"></div>
+        <div class="container">
+            <div id="form" class="z-depth-1 grey lighten-4 row" style="width: 500px; display: inline-table; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
+                <form class="col s12" action="controller/controllerLogin.php">
+                    <div class='row'>
+                        <div class='col s12'>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class='validate' type='text' name='user' id='email' />
+                            <label class="left-align" for='email'>Usuario</label>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input class='validate' type='password' name='pass' id='password' />
+                            <label class="left-align" for='password'>Contrasena</label>
+                        </div>
+                    </div>
+                    <br/>
+                    <div class='row'>
+                        <input type="hidden" name="opcion" value="Ingreso">
+                        <button type='submit' name="action" class='col s12 btn btn-large waves-effect indigo' id="connect">Ingresar</button>
+                    </div>
+                </form>
             </div>
-        </nav>
-        <div id="capa" style="display: none;padding: 10px; background-color: #FFE4C4">
-            EL POSTULANTE HA SIDO GUARDADO CON EXITO
-        </div>
-        <?php
-        if (isset($_SESSION['mensaje'])) {
-            echo "<script type='text/javascript'>
-                         M.toast({html: '" . $_SESSION['mensaje'] . "', classes: 'rounded', displayLength: '1000'});
-                      </script>";
-        }
-        if (isset($_SESSION['confirmado'])) {
-            echo " <script language='JavaScript'>confirmacion();</script>";
-            unset($_SESSION['confirmado']);
-        }
-        ?>
-        <div class="container">
-            <div class="divider"></div>
-            <form action="controller/controllerBeca.php" >
-                <table>
-                    <td style="width: auto"><b>BECA A POSTULARSE</b></td>
-                    <td>
-                        <select name="cod_beca" style="width: auto">
-                            <?php
-                            $becaModel = new becaModel();
-                            $listado = $becaModel->getBecas();
-                            foreach ($listado as $beca) {
-                                echo "<option value='" . $beca->getCod_beca() . "'>" . $beca->getNombre() . "</option>";
-                            }
-                            ?>
-                        </select>
-                    </td>
-                    <td></td><td></td>
-                    <td>
-                        <input type="hidden" name="opcion" value="agregarBeca">
-                        <button class="btn-floating btn-large waves-effect waves-light red lighten-2" type="submit" name="action">
-                            <i class="material-icons right">add</i>
-                        </button>
-                    </td>
-                </table>
-            </form>
-
-            <form action="controller/controllerPostulante.php" name="P">
-                <input type="hidden" name="opcion" value="insertarP">
-                <div class="section"><h5></h5></div>
-                <h5>INGRESO POSTULANTE</h5>
-                <div class="divider"></div>
-                <div class="row">
-                    <div class="input-field col s3">
-                        <input id="cedula" type="text" name="cedula" class="validate" size="10" maxlength="10" pattern="[0-9]{10}" required>
-                        <label for="cedula">Cedula</label>
-                    </div>
-                    <div class="input-field col s3"> 
-                        <input id="nombres" type="text" name="nombres" class="validate"  pattern="([A-Za-z]*[ ]*)*" required>
-                        <label for="nombres">Nombres</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id="apellidos" type="text" name="apellidos" class="validate" pattern="([A-Za-z]*[ ]*)*" required>
-                        <label for="apellidos">Apellidos</label>
-                    </div>
-                    <div class="input-field col s3">
-                        <input id="promedio" type="text" name="promedio" class="validate" pattern="[0-9]{2}" required>
-                        <label for="promedio">Promedio</label>
-                    </div>
-                    <input type="text" class="datepicker">
+            <div class="row" id="snipper" style="width: 500px; display: inline-table;">
+                <div class="progress col s12">
+                    <div class="indeterminate red lighten-2"></div>
                 </div>
-                <button class="waves-effect waves-light btn red lighten-2" type="submit" name="action">Postular
-                    <i class="material-icons right">add</i>
-                </button>  
-                <div class="section"><h5></h5></div>
-                <div class="divider"></div>
-                <div class="section"><h5></h5></div>
-            </form>
+            </div>
         </div>
-        <div class="container">
-            <table class="highlight centered"> 
-                <thead>
-                    <tr>
-                        <th>CODIGO BECA</th>
-                        <th>UNIVERSIDAD</th>
-                        <th>NOMBRE</th>
-                        <th>MONTO</th>
-                        <th>MANTENIMIENTO</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-//verificamos si existe en sesion el listado de becaes:
-                    if (isset($_SESSION['becas_postuladas'])) {
-                        $listado = unserialize($_SESSION ['becas_postuladas']);
-                        foreach ($listado as $beca) {
-                            echo "<tr>";
-                            echo "<td>" . $beca->getCod_beca() . "</td>";
-                            echo "<td>" . $becaModel->getUniversidad($beca->getCod_universidad())->getNombre() . "</td>";
-                            echo "<td>" . $beca->getNombre() . "</td>";
-                            echo "<td>" . $beca->getMonto() . "</td>";
-                            echo "<td align='center'><a href='controller/controllerBeca.php?opcion=eliminarPostulacion&cod_beca=" . $beca->getCod_beca() . "'><i class='material-icons'>delete</i></a></td>";
-                            echo "</tr>";
-                        }
-                    } else {
-                        echo "No se han cargado datos.";
-                    }
-                    ?>
-                    <?php
-                    ?>
-                </tbody>
-            </table>
-        </div>
-        <!--JavaScript at end of body for optimized loading-->
-        <script type="text/javascript" src="js/materialize.min.js"></script>
-    </body>
+    </center>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#snipper').hide();
+            $('#connect').click(function () {
+                $('#snipper').show();
+                $('#form').hide();
+                $('#connect').hide();
+            });
+        });
+    </script>
+</body>
 </html>

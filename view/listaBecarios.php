@@ -60,7 +60,7 @@ include_once '../model/Postulante.php';
             </ul>
             <nav>
                 <div class="nav-wrapper red lighten-2">
-                    <a href="../index.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
+                    <a href="../main.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
                     <ul class="right hide-on-med-and-down">
                         <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
                         <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>

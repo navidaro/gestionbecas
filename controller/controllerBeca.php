@@ -13,7 +13,7 @@ switch ($opcion) {
         $listado = $becaModel->getBecas();
 //y los guardamos en sesion:
         $_SESSION['listadoBeca'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/crudBecas.php');
         break;
 
@@ -22,7 +22,7 @@ switch ($opcion) {
         $listado = $becaModel->Resumen();
 //y los guardamos en sesion:
         $_SESSION['listadoResumen'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/resumenBecas.php');
         break;
 
@@ -45,7 +45,7 @@ switch ($opcion) {
         $listado = $becaModel->getBecas();
 //y los guardamos en sesion:
         $_SESSION['listadoBeca'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/crudBecas.php');
         break;
 
@@ -81,17 +81,17 @@ switch ($opcion) {
             $mensaje = $e->getMessage();
             $_SESSION['mensaje'] = $mensaje;
         }
-        header('Location: ../index.php');
+        header('Location: ../main.php');
         break;
 
     case "eliminarPostulacion":
         $cod_beca = $_REQUEST['cod_beca'];
         $becaModel->eliminarPostulacion($cod_beca);
-        header('Location: ../index.php');
+        header('Location: ../main.php');
         break;
 
 
     default:
-//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina index:
-        header('Location: ../index.php');
+//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina main:
+        header('Location: ../main.php');
 }

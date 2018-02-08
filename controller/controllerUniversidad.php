@@ -13,7 +13,7 @@ switch ($opcion) {
         $listado = $universidadModel->getUniversidades();
 //y los guardamos en sesion:
         $_SESSION['listadoU'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/crudUniversidades.php');
         break;
 
@@ -37,7 +37,7 @@ switch ($opcion) {
         $listado = $universidadModel->getUniversidades();
 //y los guardamos en sesion:
         $_SESSION['listadoU'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/crudUniversidades.php');
         break;
 
@@ -68,6 +68,6 @@ switch ($opcion) {
 
 
     default:
-//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina index:
-        header('Location: ../index.php');
+//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina main:
+        header('Location: ../main.php');
 }

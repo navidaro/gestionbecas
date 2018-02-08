@@ -13,7 +13,7 @@ switch ($opcion) {
         $listado = $becarioModel->getBecarios();
 //y los guardamos en sesion:
         $_SESSION['listadoB'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/listaBecarios.php');
         break;
 
@@ -44,7 +44,7 @@ switch ($opcion) {
         $listado = $becarioModel->getBecarios();
 //y los guardamos en sesion:
         $_SESSION['listadoB'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/listaBecarios.php');
         break;
 
@@ -79,6 +79,6 @@ switch ($opcion) {
         break;
 
     default:
-//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina index:
-        header('Location: ../index.php');
+//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina main:
+        header('Location: ../main.php');
 }

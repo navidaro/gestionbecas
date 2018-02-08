@@ -13,7 +13,7 @@ switch ($opcion) {
         $listado = $carreraModel->getCarreras();
 //y los guardamos en sesion:
         $_SESSION['listadoC'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/crudCarrera.php');
         break;
 
@@ -34,7 +34,7 @@ switch ($opcion) {
         $listado = $carreraModel->getCarreras();
 //y los guardamos en sesion:
         $_SESSION['listadoC'] = serialize($listado);
-//redireccionamos a la pagina index para visualizar:
+//redireccionamos a la pagina main para visualizar:
         header('Location: ../view/crudCarrera.php');
         break;
 
@@ -61,6 +61,6 @@ switch ($opcion) {
         break;
 
     default:
-//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina index:
-        header('Location: ../index.php');
+//si no existe la opcion recibida por el controlador, siempre redirigimos la navegacion a la pagina main:
+        header('Location: ../main.php');
 }
