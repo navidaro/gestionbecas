@@ -8,18 +8,19 @@ include_once '../model/Provincia.php';
     <head>
         <meta charset="UTF-8">
         <title>GESTION BECAS</title>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="../js/jquery-2.1.4.js"></script>
         <script src="../smoke.js-master/smoke.js"></script>
         <script src="../smoke.js-master/smoke.min.js"></script>
         <script src="../smoke.js-master/bower.json"></script>
         <link href="../smoke.js-master/smoke.css" rel="stylesheet">
-        <script src="../js/bootstrap-table.js"></script>
-        <link href="../css/bootstrap.css" rel="stylesheet">
-        <link href="../css/bootstrap-table.css" rel="stylesheet">
-        <script src="../js/bootstrap.js"></script>
         <link href="../img/glyphicons-halflings-white.png" rel="stylesheet">
         <link href="../img/glyphicons-halflings.png" rel="stylesheet">
         <script src="../js/Validaciones.js"></script>
@@ -48,56 +49,71 @@ include_once '../model/Provincia.php';
         </script>
         <title>GESTION BECAS</title>
     </head>
-    <body background='../img/fondo.jpg'>
-        <div class="container-fluid">
-            <ul class="nav nav-pills">
-                <li class="active"><a href="../controller/controllerPostulante.php?opcion=listarP">INICIO</a></li>
-                <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">LISTA POSTULANTES</a></li>
-                <li><a href="../controller/controllerbecario.php?opcion=listarB">LISTA BECARIOS</a></li>
-                <li><a href="../controller/controllerBeca.php?opcion=listarResumen">RESUMEN BECAS</a></li>
-                <li><a href="../controller/controllerUniversidad.php?opcion=listarU">CRUD UNIVERSIDADES</a></li>
-                <li><a href="../controller/controllerBeca.php?opcion=listarBeca">CRUD BECAS</a></li>
-                <li><a href="../controller/controllerProvincia.php?opcion=listarProv">CRUD PROVICNCIAS</a></li>
-                <li><a href="../controller/controllerCarrera.php?opcion=listarC">CRUD CARRERAS</a></li>
-            </ul>
-            <?php
-            if (isset($_SESSION['mensaje'])) {
-                echo "<div class='alert alert-danger'>" . $_SESSION['mensaje'] . "</div>";
-            }
-            if (isset($_SESSION['confirmadoProvincia'])) {
-                echo " <script language='JavaScript'>confirmacion();</script>";
-                unset($_SESSION['confirmadoProvincia']);
-            }
-            if (isset($_SESSION['actualizadoProvincia'])) {
-                echo " <script language='JavaScript'>actualizacion();</script>";
-                unset($_SESSION['actualizadoProvincia']);
-            }
-            ?>
+    <body>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="../controller/controllerUniversidad.php?opcion=listarU">CRUD Universidades</a></li>
+            <li><a href="../controller/controllerBeca.php?opcion=listarBeca">CRUD Becas</a></li>
+            <li><a href="../controller/controllerProvincia.php?opcion=listarProv">CRUD Provincias</a></li>
+            <li><a href="../controller/controllerCarrera.php?opcion=listarC">CRUD Carreras</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper red lighten-2">
+                <a href="../index.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
+                    <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>
+                    <li><a href="../controller/controllerBecario.php?opcion=listarB">Lista de Becarios</a></li>
+                    <li><a href="../controller/controllerBeca.php?opcion=listarResumen">Resumen de Becas</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Administracion de Variables<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <?php
+        if (isset($_SESSION['mensaje'])) {
+            echo "<div class='alert alert-danger'>" . $_SESSION['mensaje'] . "</div>";
+        }
+        if (isset($_SESSION['confirmadoProvincia'])) {
+            echo " <script language='JavaScript'>confirmacion();</script>";
+            unset($_SESSION['confirmadoProvincia']);
+        }
+        if (isset($_SESSION['actualizadoProvincia'])) {
+            echo " <script language='JavaScript'>actualizacion();</script>";
+            unset($_SESSION['actualizadoProvincia']);
+        }
+        ?>
+        <div class="container">
             <form action="../controller/controllerProvincia.php">
                 <input type="hidden" name="opcion" value="insertarProv">
-                <table class="table table-bordered table-hover">
-                    <tr>
-                        <td colspan="2">
-                            <h3>INGRESO PROVINCIA</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>NOMBRE</td>
-                        <td><input type="text" name="nombre"required pattern="[a-zA-Z- ]*"> - [a-zA-Z]*</td>
-                    </tr>
-                    <tr><td colspan="2"><input class='btn btn-primary' type="submit" value="INSERTAR NUEVA PROVINCIA"></td></tr>
-                </table>
+                <h4>Ingreso Provincia</h4>
+                <div class="divider"></div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="input-field col s6">
+                        <input id="nombre" type="text" name="nombre" class="validate" required pattern="[a-zA-Z- ]*">
+                        <label for="nombre">Nombre</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12">
+                        <button class="waves-effect waves-light btn red lighten-2" type="submit" name="action">Insertar
+                        </button>
+                    </div>
+                </div>
             </form>
-            <table class="table table-striped table-bordered">
-                <tr>
-                    <td>
-                        <form action="../controller/controllerProvincia.php">
-                            <input type="hidden" name="opcion" value="listarProv">
-                            <input class='btn btn-primary ' class='btn btn-ttc' type="submit" value="CONSULTAR LISTADO">
-                        </form>
-                    </td>
-                </tr>
-            </table>
+            <div class="divider"></div>
+            <br><br>
+            <form action="../controller/controllerProvincia.php">
+                <input type="hidden" name="opcion" value="listarProv">
+                <div class="row">
+                    <div class="col s12">
+                        <button class="waves-effect waves-light btn red lighten-2" type="submit" name="action">Consultar listado
+                        </button>
+                    </div>
+                </div>
+            </form>
+
             <table data-toggle="table" data-pagination="true" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -116,8 +132,8 @@ include_once '../model/Provincia.php';
                             echo "<tr>";
                             echo "<td>" . $prov->getCod_provincia() . "</td>";
                             echo "<td>" . $prov->getNombre() . "</td>";
-                            echo "<td><a class='btn btn-info' onclick='return confirmar()' href='../controller/controllerProvincia.php?opcion=eliminar&cod_provincia=" . $prov->getCod_provincia() . "'><i class='material-icons'>delete</i></a></td>";
-                            echo "<td><a class='btn btn-info' href='../controller/controllerProvincia.php?opcion=actualizar&cod_provincia=" . $prov->getCod_provincia() . "'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+                            echo "<td><a onclick='return confirmar()' href='../controller/controllerProvincia.php?opcion=eliminar&cod_provincia=" . $prov->getCod_provincia() . "'><i class='material-icons'>delete</i></a></td>";
+                            echo "<td><a href='../controller/controllerProvincia.php?opcion=actualizar&cod_provincia=" . $prov->getCod_provincia() . "'><i class='material-icons center-align'>edit</i></a></td>";
                             echo "</tr>";
                         }
                     } else {
@@ -133,5 +149,7 @@ include_once '../model/Provincia.php';
             ?>.
         </div>
         <?php ?>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
     </body>
 </html>

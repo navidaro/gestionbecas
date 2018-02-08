@@ -3,12 +3,33 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/gestionBecas/model/becarioModel.php</file>
-            <file>file:/C:/xampp/htdocs/gestionBecas/model/Becario.php</file>
-            <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerBecario.php</file>
-            <file>file:/C:/xampp/htdocs/gestionBecas/view/listaBecarios.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/login.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/js/materialize.js</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/Carrera.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/Database.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/crudUniversidades.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/Login.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/acreditar.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/index.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/crudProvincia.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/js/materialize.min.js</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/becaModel.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/loginModel.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerCarrera.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/crudCarrera.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/Postulante.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/carreraModel.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/resumenBecas.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerBecario.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/postulanteModel.php</file>
             <file>file:/C:/xampp/htdocs/gestionBecas/view/lstaPostulantes.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/actualizarUniversidad.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/actualizarBeca.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/crudBecas.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerBeca.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/controller/controllerLogin.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/view/listaBecarios.php</file>
+            <file>file:/C:/xampp/htdocs/gestionBecas/model/Beca.php</file>
         </group>
     </open-files>
 </project-private>

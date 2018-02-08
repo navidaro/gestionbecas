@@ -64,7 +64,7 @@ include_once '../model/Postulante.php';
                     <ul class="right hide-on-med-and-down">
                         <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
                         <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>
-                        <li><a href="../controller/controllerbecario.php?opcion=listarB">Lista de Becarios</a></li>
+                        <li><a href="../controller/controllerBecario.php?opcion=listarB">Lista de Becarios</a></li>
                         <li><a href="../controller/controllerBeca.php?opcion=listarResumen">Resumen de Becas</a></li>
                         <!-- Dropdown Trigger -->
                         <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Administracion de Variables<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -86,6 +86,7 @@ include_once '../model/Postulante.php';
             ?>
             <div class="container">
                 <div class="section"><h5></h5></div>
+                <h4>Becarios Inscritos</h4>
                 <div class="divider"></div>
                 <div class="section"><h5></h5></div>
                 <table data-toggle="table" data-pagination="true" class="table table-striped table-bordered">

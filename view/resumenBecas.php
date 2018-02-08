@@ -18,7 +18,7 @@ include_once '../model/Postulante.php';
         <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
         <!--Let browser know website is optimized for mobile-->
         <meta httpequiv="refresh" content="0; url=view/index.php" />
-        <script src="js/jquery-2.1.4.js"></script>
+        <script src="../js/jquery-2.1.4.js"></script>
         <title></title>
     </head>
     <body>
@@ -34,7 +34,7 @@ include_once '../model/Postulante.php';
                 <ul class="right hide-on-med-and-down">
                     <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
                     <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>
-                    <li><a href="../controller/controllerbecario.php?opcion=listarB">Lista de Becarios</a></li>
+                    <li><a href="../controller/controllerBecario.php?opcion=listarB">Lista de Becarios</a></li>
                     <li><a href="../controller/controllerBeca.php?opcion=listarResumen">Resumen de Becas</a></li>
                     <!-- Dropdown Trigger -->
                     <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Administracion de Variables<i class="material-icons right">arrow_drop_down</i></a></li>
@@ -45,7 +45,7 @@ include_once '../model/Postulante.php';
             <table class="table table-striped table-bordered" data-toggle="table" data-pagination="true">
                 <tr>
                     <td colspan="7">
-                        <h5><b>RESUMEN DE BECARIOS POR BECAS</b></h5>
+                        <h4>Resumen por Becas</h4>
                     </td>
                 </tr>
                 <tr><h5></h5></tr>
@@ -75,7 +75,7 @@ include_once '../model/Postulante.php';
                 } else {
                     echo "No se han cargado datos.";
                 }
-                echo '<tr><td colspan="4"><h4><b>PROMEDIO TOTAL: ' . round($total / $cont, 3) . '</b></h4></td></tr>';
+                echo '<tr><td colspan="4"><h4><b>Promedio total: ' . round($total / $cont, 3) . '</b></h4></td></tr>';
                 ?>
 
             </table>

@@ -9,17 +9,19 @@ include_once '../model/Provincia.php';
     <head>
         <meta charset="UTF-8">
         <title>GESTION BECAS</title>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
         <!--Import Google Icon Font-->
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <!--Import materialize.css-->
+        <link type="text/css" rel="stylesheet" href="../css/materialize.min.css"  media="screen,projection"/>
+        <!--Let browser know website is optimized for mobile-->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <script src="../js/jquery-2.1.4.js"></script>
         <script src="../smoke.js-master/smoke.js"></script>
         <script src="../smoke.js-master/smoke.min.js"></script>
         <script src="../smoke.js-master/bower.json"></script>
         <link href="../smoke.js-master/smoke.css" rel="stylesheet">
-        <script src="../js/bootstrap-table.js"></script>
-        <link href="../css/bootstrap.css" rel="stylesheet">
-        <link href="../css/bootstrap-table.css" rel="stylesheet">
         <script src="../js/bootstrap.js"></script>
         <link href="../img/glyphicons-halflings-white.png" rel="stylesheet">
         <link href="../img/glyphicons-halflings.png" rel="stylesheet">
@@ -50,62 +52,68 @@ include_once '../model/Provincia.php';
         </script>
         <title>GESTION BECAS</title>
     </head>
-    <body background='../img/fondo.jpg'>
-        <div class="container-fluid">
-            <ul class="nav nav-pills">
-                <li class="active"><a href="../controller/controllerPostulante.php?opcion=listarP">INICIO</a></li>
-                <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">LISTA POSTULANTES</a></li>
-                <li><a href="../controller/controllerbecario.php?opcion=listarB">LISTA BECARIOS</a></li>
-                <li><a href="../controller/controllerBeca.php?opcion=listarResumen">RESUMEN BECAS</a></li>
-                <li><a href="../controller/controllerUniversidad.php?opcion=listarU">CRUD UNIVERSIDADES</a></li>
-                <li><a href="../controller/controllerBeca.php?opcion=listarBeca">CRUD BECAS</a></li>
-                <li><a href="../controller/controllerProvincia.php?opcion=listarProv">CRUD PROVICNCIAS</a></li>
-                <li><a href="../controller/controllerCarrera.php?opcion=listarC">CRUD CARRERAS</a></li>
-            </ul>
-            <?php
-            if (isset($_SESSION['mensaje'])) {
-                echo "<div class='alert alert-danger'>" . $_SESSION['mensaje'] . "</div>";
-            }
-            if (isset($_SESSION['confirmadoUniversidad'])) {
-                echo " <script language='JavaScript'>confirmacion();</script>";
-                unset($_SESSION['confirmadoUniversidad']);
-            }
+    <body>
+        <ul id="dropdown1" class="dropdown-content">
+            <li><a href="../controller/controllerUniversidad.php?opcion=listarU">CRUD Universidades</a></li>
+            <li><a href="../controller/controllerBeca.php?opcion=listarBeca">CRUD Becas</a></li>
+            <li><a href="../controller/controllerProvincia.php?opcion=listarProv">CRUD Provincias</a></li>
+            <li><a href="../controller/controllerCarrera.php?opcion=listarC">CRUD Carreras</a></li>
+        </ul>
+        <nav>
+            <div class="nav-wrapper red lighten-2">
+                <a href="../index.php" class="brand-logo"><img src="../img/sello.png" width="150 px" height="50 px" ></a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="../controller/controllerPostulante.php?opcion=listarP">Inicio</a></li>
+                    <li><a href="../controller/controllerPostulante.php?opcion=listarPostulantes">Lista de Postulantes</a></li>
+                    <li><a href="../controller/controllerBecario.php?opcion=listarB">Lista de Becarios</a></li>
+                    <li><a href="../controller/controllerBeca.php?opcion=listarResumen">Resumen de Becas</a></li>
+                    <!-- Dropdown Trigger -->
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Administracion de Variables<i class="material-icons right">arrow_drop_down</i></a></li>
+                </ul>
+            </div>
+        </nav>
+        <?php
+        if (isset($_SESSION['mensaje'])) {
+            echo "<div class='alert alert-danger'>" . $_SESSION['mensaje'] . "</div>";
+        }
+        if (isset($_SESSION['confirmadoUniversidad'])) {
+            echo " <script language='JavaScript'>confirmacion();</script>";
+            unset($_SESSION['confirmadoUniversidad']);
+        }
 
-            if (isset($_SESSION['actualizadoUniversidad'])) {
-                echo " <script language='JavaScript'>actualizacion();</script>";
-                unset($_SESSION['actualizadoUniversidad']);
-            }
-            ?>
+        if (isset($_SESSION['actualizadoUniversidad'])) {
+            echo " <script language='JavaScript'>actualizacion();</script>";
+            unset($_SESSION['actualizadoUniversidad']);
+        }
+        ?>
+        <div class="container">
             <form action="../controller/controllerUniversidad.php">
                 <input type="hidden" name="opcion" value="insertarU">
-                <table class="table table-bordered table-hover">
-                    <tr>
-                        <td colspan="2">
-                            <h3>INGRESO UNIVERSIDAD</h3>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>NOMBRE</td>
-                        <td><input type="text" name="nombre" pattern="[a-zA-Z- ]*" required>- [a-zA-Z]</td>
-                    </tr>
-                    <tr>
-                        <td>TELEFONO</td>
-                        <td><input type="text" name="telefono"  size="10" maxlength="10" pattern="[0-9]*" required> - (NNNNNNNNN)</td>
-                    </tr>
-                    <tr>
-                        <td>CATEGORIA</td>
-                        <td>
-                            <select name="categoria" class="text-info">
+                <div class="row">
+                    <h4>Ingreso Universidad</h4>
+                    <div class="divider"></div>
+                    <br>
+                    <div class="section"></div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input id="nombre" type="text" name="nombre" class="validate">
+                            <label for="nombre">Nombre</label>
+                        </div>
+                        <div class="input-field col s6">
+                            <input id="telefono" type="text" name="telefono" class="validate" size="10" maxlength="10" pattern="[0-9]*" required>
+                            <label for="telefono">Telefono</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <select name="categoria">
                                 <option value='PRIVADA'>PRIVADA</option>
                                 <option value='FISCAL'>FISCAL</option>
                                 <option value='FISCOMISIONAL'>FISCOMISIONAL</option>
                             </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>PROVINCIA</td>
-                        <td>
-                            <select class="text-info" name="cod_provincia" style="width: auto">
+                        </div>
+                        <div class="input-field col s6">
+                            <select class="text-info" name="cod_provincia">
                                 <?php
                                 $provinciaModel = new provinciaModel();
                                 $listado = $provinciaModel->getProvincias();
@@ -115,21 +123,26 @@ include_once '../model/Provincia.php';
                                 }
                                 ?>
                             </select>
-                        </td>
-                    </tr>
-                    <tr><td colspan="2"><input class='btn btn-primary' type="submit" value="INSERTAR NUEVA UNIVERSIDAD"></td></tr>
-                </table>
+                        </div>
+                    </div>
+                    <div class="section"></div>
+                    <div class="col s12">
+                        <button class="waves-effect waves-light btn red lighten-2" type="submit" name="action">Insertar
+                        </button> 
+                    </div>
+                </div>
             </form>
-            <table class="table table-striped table-bordered">
-                <tr>
-                    <td>
-                        <form action="../controller/controllerUniversidad.php">
-                            <input type="hidden" name="opcion" value="listarU">
-                            <input class='btn btn-primary ' class='btn btn-ttc' type="submit" value="CONSULTAR LISTADO">
-                        </form>
-                    </td>
-                </tr>
-            </table>
+            <div class="divider"></div>
+            <br>
+            <div class="row">
+                <div class="col s12">
+                    <form action="../controller/controllerUniversidad.php">
+                        <input type="hidden" name="opcion" value="listarU">
+                        <button class="waves-effect waves-light btn red lighten-2" type="submit" name="action">Consultar Listado
+                        </button>
+                    </form>
+                </div>
+            </div>
             <table data-toggle="table" data-pagination="true" class="table table-striped table-bordered">
                 <thead>
                     <tr>
@@ -154,8 +167,8 @@ include_once '../model/Provincia.php';
                             echo "<td>" . $universidad->getNombre() . "</td>";
                             echo "<td>" . $universidad->getTelefono() . "</td>";
                             echo "<td>" . $universidad->getCategoria() . "</td>";
-                            echo "<td align='center'><a class='btn btn-info' onclick='return confirmar()' href='../controller/controllerUniversidad.php?opcion=eliminar&cod_universidad=" . $universidad->getCod_universidad() . "'><i class='material-icons'>delete</i></a></td>";
-                            echo "<td align='center'><a class='btn btn-info' href='../controller/controllerUniversidad.php?opcion=actualizar&cod_universidad=" . $universidad->getCod_universidad() . "'><span class='glyphicon glyphicon-pencil'></span></a></td>";
+                            echo "<td align='center'><a onclick='return confirmar()' href='../controller/controllerUniversidad.php?opcion=eliminar&cod_universidad=" . $universidad->getCod_universidad() . "'><i class='material-icons center-align'>delete</i></a></td>";
+                            echo "<td align='center'><a href='../controller/controllerUniversidad.php?opcion=actualizar&cod_universidad=" . $universidad->getCod_universidad() . "'><i class='material-icons center-align'>update</i></a></td>";
                             echo "</tr>";
                         }
                     } else {
@@ -168,8 +181,10 @@ include_once '../model/Provincia.php';
             if (isset($_SESSION['mensaje'])) {
                 echo "<br>MENSAJE DEL SISTEMA: <font color='red'>" . $_SESSION['mensaje'] . "</font><br>";
             }
-            ?>.
+            ?>
         </div>
         <?php ?>
+        <!--JavaScript at end of body for optimized loading-->
+        <script type="text/javascript" src="../js/materialize.min.js"></script>
     </body>
 </html>
