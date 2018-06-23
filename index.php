@@ -35,7 +35,7 @@
     <body>
         <div class="section"></div>
     <center>
-        <img class="responsive-img" style="width: 250px;" src="http://eduvirtual.utn.edu.ec/images/sello_UTN_f.png" />
+        <img class="responsive-img" style="width: 250px;" src="http://www.forosecuador.ec/imgfe/consultar-resultados-asignacion-cupos-utn.png" />
         <div class="section"></div>
         <div class="container">
             <div id="form" class="z-depth-1 grey lighten-4 row" style="width: 500px; display: inline-table; padding: 32px 48px 0px 48px; border: 1px solid #EEE;">
