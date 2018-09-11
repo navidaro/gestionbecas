@@ -4,7 +4,7 @@ class Database {
 
 //Propiedades estaticas con la informacion de la conexion (DSN):
     private static $dbName = 'gestionbecas';
-    private static $dbHost = '172.30.230.2';
+    private static $dbHost = '172.30.218.139';
     private static $dbUsername = 'irojas';
     private static $dbUserPassword = '2608061293.Navi';
 //Propiedad para control de la conexion:
